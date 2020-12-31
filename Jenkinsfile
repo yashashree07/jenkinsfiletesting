@@ -1,11 +1,13 @@
 pipeline{
   agent any
-  
+  tools {
+        maven 'Maven_3.5.2' 
+    }
   stages {
     stage('Compile Stage'){
     
           steps{
-                   withMaven(maven : 'maven-3.6.3'){
+                  {
                         sh 'mvn compile'
                  }
           }
@@ -13,7 +15,7 @@ pipeline{
     stage('Test Stage'){
             
             steps{
-                    withMaven(maven : 'maven-3.6.3'){
+                   {
                         sh 'mvn test'
                   }
            }
@@ -21,8 +23,8 @@ pipeline{
     stage('Reporting Stage'){
     
              steps{
-                    withMaven(maven : 'maven-3.6.3'){
-                        sh 'mvn test'
+                    {
+                        sh 'mvn report'
                   }
            }
     }
