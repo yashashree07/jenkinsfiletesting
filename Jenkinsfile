@@ -1,7 +1,7 @@
 pipeline{
   agent any
   tools {
-        MAVEN_HOME 'C:\Program Files\apache-maven-3.6.3' 
+        MAVEN_HOME 'apache-maven-3.6.3' 
     }
   stages {
     stage('Compile Stage'){
