@@ -1,9 +1,15 @@
 pipeline { 
     agent any  
     stages { 
-        stage('Build') { 
+        stage('Checkout') { 
             steps { 
-               echo 'This is a minimal pipeline.' 
+               git branch: 'main', url: 'https://github.com/yashashree07/jenkinsfiletesting.git'
+            }
+        }
+        stage('build') { 
+            steps { 
+               def mavenhome= tool name: 'MAVEN_HOME', type: 'maven'
+                sh "${mavenhome}/bin/mvn test"
             }
         }
     }
